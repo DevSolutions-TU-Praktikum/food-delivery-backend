@@ -1,5 +1,6 @@
-package com.example.food_delivery_app.Model;
+package com.example.food_delivery_app.Entity;
 
+import jakarta.persistence.*;
 import lombok.*;
 
 @Getter
@@ -8,9 +9,18 @@ import lombok.*;
 @AllArgsConstructor
 @ToString
 
-public class UserDelivererModel {
-    private int Id;
+@Entity
+@Table(name = "USER_DELIVERER")
+public class UserDeliverer {
+    @Id
+    @OneToOne
+    @MapsId
+    @JoinColumn(name = "id")
+    private int id;
+
     private double delivererRating;
+
     private int completedDeliveries;
+
     private double totalEarnings;
 }

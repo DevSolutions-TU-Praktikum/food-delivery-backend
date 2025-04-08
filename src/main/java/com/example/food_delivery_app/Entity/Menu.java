@@ -1,7 +1,9 @@
-package com.example.food_delivery_app.Model;
+package com.example.food_delivery_app.Entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.*;
 import lombok.*;
 
 @Getter
@@ -10,9 +12,19 @@ import lombok.*;
 @AllArgsConstructor
 @ToString
 
-public class MenuModel {
-    private int Id;
-    private int restaurantId;
+@Entity
+@Table(name = "MENU")
+public class Menu {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
     private String menuDescription;
-    List<MenuItemsModel> itemsModels;
+
+    @OneToMany(mappedBy = "menu", cascade = CascadeType.ALL)
+    List<MenuItem> menuItems = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "restaurant_id")
+    private Restaurant restaurant;
 }
