@@ -4,23 +4,14 @@ import lombok.*;
 
 @Getter
 @Setter
-@RequiredArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
+@ToString
 
-
-public class User
-{
+public class User {
     private int id;
-
-    @NonNull
     private String username;
-
-    @NonNull
     private String password;
-
-    @NonNull
-    private String phoneNumber;
-
-    @NonNull
-    private String email;
+    private String userEmail;
+    private String userPhoneNumber;
 }
