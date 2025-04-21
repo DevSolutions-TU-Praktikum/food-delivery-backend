@@ -17,7 +17,7 @@ import lombok.*;
 @ToString
 
 @Entity
-@Table(name = "ORDER")
+@Table(name = "ORDERS")
 
 public class Order {
     private enum Status {
