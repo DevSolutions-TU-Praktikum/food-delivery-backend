@@ -12,10 +12,12 @@ import lombok.*;
 @Entity
 @Table(name = "USER_DELIVERER")
 public class UserDeliverer {
-    @Id
     @OneToOne
     @MapsId
     @JoinColumn(name = "id")
+    private User user;
+
+    @Id
     private int id;
 
     private double delivererRating;

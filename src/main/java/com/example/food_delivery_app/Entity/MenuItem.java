@@ -22,7 +22,11 @@ public class MenuItem {
     @JoinColumn(name = "menu_id")
     private Menu menu;
 
-    private MultipartFile image;
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    private Order order;
+
+    private String imageUrl;
 
     @NonNull
     private String itemName;

@@ -12,9 +12,11 @@ import lombok.*;
 @Entity
 @Table(name = "USER_CLIENT")
 public class UserClient {
-    @Id
     @OneToOne
-    @MapsId 
+    @MapsId
     @JoinColumn(name = "id")
+    private User user;
+
+    @Id
     private int id;
 }

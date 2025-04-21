@@ -12,10 +12,12 @@ import lombok.*;
 @Entity
 @Table(name = "USER_EMPLOYEE")
 public class UserEmployee {
-    @Id
     @OneToOne
     @MapsId
     @JoinColumn(name = "id")
+    private User user;
+
+    @Id
     private int id;
 
     @ManyToOne
