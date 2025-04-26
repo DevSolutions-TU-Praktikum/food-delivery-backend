@@ -27,4 +27,9 @@ public class User {
 
     @NonNull
     private String userPhoneNumber;
+
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
+    private String adminPermissions;
 }
