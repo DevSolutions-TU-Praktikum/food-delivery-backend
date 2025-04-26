@@ -34,7 +34,7 @@ public class Order {
 
     @ManyToOne
     @JoinColumn(name = "userclient_id")
-    private UserClient userClient;
+    private User userClient;
 
     @ManyToOne
     @JoinColumn(name = "restaurant_id")
