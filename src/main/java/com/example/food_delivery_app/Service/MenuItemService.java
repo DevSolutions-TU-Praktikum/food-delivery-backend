@@ -2,9 +2,9 @@ package com.example.food_delivery_app.Service;
 
 import com.example.food_delivery_app.Entity.MenuItem;
 import com.example.food_delivery_app.Repository.MenuItemRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -24,6 +24,9 @@ public class MenuItemService {
 
 
     public Optional<MenuItem> getMenuItemById(int id) {
+        if (!menuItemRepository.existsById(id)) {
+            throw new EntityNotFoundException("MenuItem not found with ID: " + id);
+        }
         return menuItemRepository.findById(id);
     }
 
@@ -34,11 +37,10 @@ public class MenuItemService {
 
 
     public MenuItem updateMenuItem(int id, MenuItem menuItem) {
-        if (menuItemRepository.existsById(id)) {
-            menuItem.setId(id);
-            return menuItemRepository.save(menuItem);
+        if (!menuItemRepository.existsById(id)) {
+            throw new EntityNotFoundException("MenuItem not found with ID: " + id);
         }
-        return null;
+        return menuItemRepository.save(menuItem);
     }
 
 
