@@ -10,7 +10,7 @@ import jakarta.persistence.*;
 @ToString
 
 @Entity
-@Table(name = "MENU_ITEMS")
+@Table(name = "menu_items")
 public class MenuItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
