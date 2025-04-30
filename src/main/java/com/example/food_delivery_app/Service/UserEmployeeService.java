@@ -1,6 +1,6 @@
 package com.example.food_delivery_app.Service;
 
-import com.example.food_delivery_app.Entity.UserEmployee;
+import com.example.food_delivery_app.Entity.UserEmployeeEntity;
 import com.example.food_delivery_app.Repository.UserEmployeeRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +18,12 @@ public class UserEmployeeService {
     }
 
 
-    public UserEmployee createUserEmployee(UserEmployee useremployee) {
+    public UserEmployeeEntity createUserEmployee(UserEmployeeEntity useremployee) {
         return useremployeeRepository.save(useremployee);
     }
 
 
-    public Optional<UserEmployee> getUserEmployeeById(int id) {
+    public Optional<UserEmployeeEntity> getUserEmployeeById(int id) {
         if (!useremployeeRepository.existsById(id)) {
             throw new EntityNotFoundException("UserEmployeeItem not found with ID: " + id);
         }
@@ -31,16 +31,16 @@ public class UserEmployeeService {
     }
 
 
-    public List<UserEmployee> getAllUserEmployees() {
+    public List<UserEmployeeEntity> getAllUserEmployees() {
         return useremployeeRepository.findAll();
     }
 
 
-    public UserEmployee updateUserEmployee(int id, UserEmployee UserEmployee) {
+    public UserEmployeeEntity updateUserEmployee(int id, UserEmployeeEntity UserEmployeeEntity) {
         if (!useremployeeRepository.existsById(id)) {
             throw new EntityNotFoundException("UserEmployeeItem not found with ID: " + id);
         }
-        return useremployeeRepository.save(UserEmployee);
+        return useremployeeRepository.save(UserEmployeeEntity);
     }
 
 

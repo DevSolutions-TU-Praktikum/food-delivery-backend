@@ -31,7 +31,7 @@ public class Order {
 
     @ManyToOne
     @JoinColumn(name = "userclient_id")
-    private User userClient;
+    private UserEntity userEntityClient;
 
     @ManyToOne
     @JoinColumn(name = "restaurant_id")
@@ -39,7 +39,7 @@ public class Order {
 
     @ManyToOne
     @JoinColumn(name = "deliverer_id")
-    private UserDeliverer userDeliverer;
+    private UserDelivererEntity userDelivererEntity;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     List<MenuItem> menuItems = new ArrayList<>();

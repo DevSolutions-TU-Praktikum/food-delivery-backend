@@ -1,8 +1,10 @@
 package com.example.food_delivery_app.Service;
 
-import com.example.food_delivery_app.Entity.User;
+import com.example.food_delivery_app.Entity.UserEntity;
 import com.example.food_delivery_app.Repository.UserRepository;
+import com.example.food_delivery_app.dto.SignUpDto;
 import jakarta.persistence.EntityNotFoundException;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -11,6 +13,7 @@ import java.util.Optional;
 @Service
 public class UserService {
     private final UserRepository userRepository;
+    private final ModelMapper modelMapper = new ModelMapper();
 
     @Autowired
     public UserService(UserRepository userRepository) {
@@ -18,12 +21,13 @@ public class UserService {
     }
 
 
-    public User createUser(User user) {
-        return userRepository.save(user);
+    public UserEntity createUser(SignUpDto dto) {
+        UserEntity userEntity = modelMapper.map(dto, UserEntity.class);
+        return userRepository.save(userEntity);
     }
 
 
-    public Optional<User> getUserById(int id) {
+    public Optional<UserEntity> getUserById(int id) {
         if (!userRepository.existsById(id)) {
             throw new EntityNotFoundException("UserItem not found with ID: " + id);
         }
@@ -31,16 +35,16 @@ public class UserService {
     }
 
 
-    public List<User> getAllUsers() {
+    public List<UserEntity> getAllUsers() {
         return userRepository.findAll();
     }
 
 
-    public User updateUser(int id, User User) {
+    public UserEntity updateUser(int id, UserEntity UserEntity) {
         if (!userRepository.existsById(id)) {
             throw new EntityNotFoundException("UserItem not found with ID: " + id);
         }
-        return userRepository.save(User);
+        return userRepository.save(UserEntity);
     }
 
 
