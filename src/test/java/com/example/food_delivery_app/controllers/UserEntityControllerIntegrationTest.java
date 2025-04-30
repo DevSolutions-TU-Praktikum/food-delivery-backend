@@ -1,5 +1,6 @@
 package com.example.food_delivery_app.controllers;
 
+import com.example.food_delivery_app.Entity.Role;
 import com.example.food_delivery_app.Entity.User;
 import com.example.food_delivery_app.Service.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -43,6 +44,9 @@ public class UserEntityControllerIntegrationTest {
         testUserA.setPassword("<PASSWORD>");
         testUserA.setUserEmail("<EMAIL>");
         testUserA.setUserPhoneNumber("1234567890");
+        testUserA.setRole(Role.CLIENT);
+        testUserA.setAdminPermissions("");
+
 //        testUserA.setId(null);
         String userJson = objectMapper.writeValueAsString(testUserA);
         mockMvc.perform(MockMvcRequestBuilders.post("/users/signup")
