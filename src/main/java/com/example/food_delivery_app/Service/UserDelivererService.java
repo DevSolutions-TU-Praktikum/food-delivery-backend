@@ -1,6 +1,6 @@
 package com.example.food_delivery_app.Service;
 
-import com.example.food_delivery_app.Entity.UserDelivererEntity;
+import com.example.food_delivery_app.Entity.UserDeliverer;
 import com.example.food_delivery_app.Repository.UserDelivererRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,43 +10,43 @@ import java.util.Optional;
 
 @Service
 public class UserDelivererService {
-    private final UserDelivererRepository userDelivererRepository;
+    private final UserDelivererRepository userdelivererRepository;
 
     @Autowired
-    public UserDelivererService(UserDelivererRepository userDelivererRepository) {
-        this.userDelivererRepository = userDelivererRepository;
+    public UserDelivererService(UserDelivererRepository userdelivererRepository) {
+        this.userdelivererRepository = userdelivererRepository;
     }
 
 
-    public UserDelivererEntity createUserDeliverer(UserDelivererEntity userDeliverer) {
-        return userDelivererRepository.save(userDeliverer);
+    public UserDeliverer createUserDeliverer(UserDeliverer userdeliverer) {
+        return userdelivererRepository.save(userdeliverer);
     }
 
 
-    public Optional<UserDelivererEntity> getUserDelivererById(int id) {
-        if (!userDelivererRepository.existsById(id)) {
+    public Optional<UserDeliverer> getUserDelivererById(int id) {
+        if (!userdelivererRepository.existsById(id)) {
             throw new EntityNotFoundException("UserDelivererItem not found with ID: " + id);
         }
-        return userDelivererRepository.findById(id);
+        return userdelivererRepository.findById(id);
     }
 
 
-    public List<UserDelivererEntity> getAllUserDeliverers() {
-        return userDelivererRepository.findAll();
+    public List<UserDeliverer> getAllUserDeliverers() {
+        return userdelivererRepository.findAll();
     }
 
 
-    public UserDelivererEntity updateUserDeliverer(int id, UserDelivererEntity UserDelivererEntity) {
-        if (!userDelivererRepository.existsById(id)) {
+    public UserDeliverer updateUserDeliverer(int id, UserDeliverer UserDeliverer) {
+        if (!userdelivererRepository.existsById(id)) {
             throw new EntityNotFoundException("UserDelivererItem not found with ID: " + id);
         }
-        return userDelivererRepository.save(UserDelivererEntity);
+        return userdelivererRepository.save(UserDeliverer);
     }
 
 
     public boolean deleteUserDeliverer(int id) {
-        if (userDelivererRepository.existsById(id)) {
-            userDelivererRepository.deleteById(id);
+        if (userdelivererRepository.existsById(id)) {
+            userdelivererRepository.deleteById(id);
             return true;
         }
         return false;

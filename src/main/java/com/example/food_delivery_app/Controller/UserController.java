@@ -1,11 +1,6 @@
 package com.example.food_delivery_app.Controller;
-
-import com.example.food_delivery_app.Repository.UserRepository;
 import com.example.food_delivery_app.Service.UserService;
-import com.example.food_delivery_app.dto.LoginDto;
-import com.example.food_delivery_app.dto.SignUpDto;
-import com.example.food_delivery_app.Entity.UserEntity;
-import jakarta.persistence.EntityNotFoundException;
+import com.example.food_delivery_app.Entity.User;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.modelmapper.ModelMapper;
@@ -21,27 +16,25 @@ import java.util.Optional;
 public class UserController {
 
     private final UserService userService;
-    private final UserRepository userRepository;
 
     @Autowired
-    public UserController(UserService userService, ModelMapper modelMapper, UserRepository userRepository) {
+    public UserController(UserService userService, ModelMapper modelMapper) {
         this.userService = userService;
-        this.userRepository = userRepository;
     }
 
-    @PostMapping("/signup")
-    public ResponseEntity<UserEntity> signup(@RequestBody SignUpDto dto) {
-        UserEntity createdUserEntity = userService.createUser(dto);
-        return ResponseEntity.ok(createdUserEntity);
+    @PostMapping()
+    public ResponseEntity<User> signup(@RequestBody User user) {
+        User createdUser = userService.createUser(user);
+        return ResponseEntity.ok(createdUser);
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody LoginDto loginDto) {
-        Optional<UserEntity> user = userRepository.findByUsername(loginDto.getUsername());
+    public ResponseEntity<?> login(@RequestBody User userLogIn) {
+        Optional<User> user = userService.getUserByUsername(userLogIn.getUsername());
 
         if (user.isPresent()) {
-            UserEntity loggedInUser = user.get();
-            Optional<UserEntity> userDetail = userService.getUserById(loggedInUser.getId());
+            User loggedInUser = user.get();
+            Optional<User> userDetail = userService.getUserById(loggedInUser.getId());
 
             if (userDetail.isPresent()) {
                 return ResponseEntity.ok(userDetail.get());
@@ -62,20 +55,13 @@ public class UserController {
         return ResponseEntity.ok("Logged out successfully");
     }
 
-    @PatchMapping("/update-user")
-    public ResponseEntity<?> updateUser(@RequestBody UserEntity userEntity) {
-        try {
-            int userId = userRepository.findByUsername(userEntity.getUsername())
-                    .map(UserEntity::getId)
-                    .orElseThrow(() -> new EntityNotFoundException("User not found."));
-
-            UserEntity updatedUser = userService.updateUser(userId, userEntity);
-            return ResponseEntity.ok(updatedUser);
-
-        } catch (EntityNotFoundException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found.");
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred while updating the user.");
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateUser(@PathVariable int id,@RequestBody User user) {
+        User updated = userService.updateUser(id, user);
+        if (updated != null) {
+            return ResponseEntity.ok(updated);
+        } else {
+            return ResponseEntity.notFound().build();
         }
     }
 }

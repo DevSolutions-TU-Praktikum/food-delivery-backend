@@ -14,7 +14,7 @@ import lombok.*;
 @ToString
 
 @Entity
-@Table(name = "ORDERS")
+@Table(name = "orders")
 
 public class Order {
     private enum Status {
@@ -31,7 +31,7 @@ public class Order {
 
     @ManyToOne
     @JoinColumn(name = "userclient_id")
-    private UserEntity userEntityClient;
+    private User userEntityClient;
 
     @ManyToOne
     @JoinColumn(name = "restaurant_id")
@@ -39,7 +39,7 @@ public class Order {
 
     @ManyToOne
     @JoinColumn(name = "deliverer_id")
-    private UserDelivererEntity userDelivererEntity;
+    private UserDeliverer userDelivererEntity;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     List<MenuItem> menuItems = new ArrayList<>();

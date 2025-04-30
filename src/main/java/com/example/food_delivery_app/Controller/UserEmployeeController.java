@@ -1,44 +1,48 @@
 package com.example.food_delivery_app.Controller;
 
-import com.example.food_delivery_app.Entity.UserEmployeeEntity;
-import com.example.food_delivery_app.Repository.UserEmployeeRepository;
+import com.example.food_delivery_app.Entity.MenuItem;
+import com.example.food_delivery_app.Entity.UserEmployee;
 import com.example.food_delivery_app.Service.UserEmployeeService;
+
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import com.example.food_delivery_app.Entity.UserEmployee;
 
 @RestController
 @RequestMapping("/userEmployee")
 public class UserEmployeeController {
 
     private final UserEmployeeService userEmployeeService;
-    private final UserEmployeeRepository userEmployeeRepository;
 
     @Autowired
-    public UserEmployeeController(UserEmployeeService userEmployeeService, UserEmployeeRepository userEmployeeRepository) {
+    public UserEmployeeController(UserEmployeeService userEmployeeService) {
         this.userEmployeeService = userEmployeeService;
-        this.userEmployeeRepository = userEmployeeRepository;
     }
 
     @GetMapping
-    public String getAllUserEmployees() {
-        return userEmployeeRepository.findAll().toString();
+    public ResponseEntity getAllUserEmployees() {
+        return ResponseEntity.ok(getAllUserEmployees());
     }
 
     @GetMapping("/{id}")
-    public String getUserEmployeeById(@PathVariable int id) {
-        return userEmployeeRepository.findById(id).toString();
+    public ResponseEntity getUserEmployeeById(@PathVariable int id) {
+        Optional<UserEmployee> found = userEmployeeService.getUserEmployeeById(id);
+        return found.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public ResponseEntity<UserEmployeeEntity> createMenuItem(@RequestBody UserEmployeeEntity userEmployee) {
-        UserEmployeeEntity created = userEmployeeService.createUserEmployee(userEmployee);
+    public ResponseEntity<UserEmployee> createMenuItem(@RequestBody UserEmployee userEmployee) {
+        UserEmployee created = userEmployeeService.createUserEmployee(userEmployee);
         return ResponseEntity.ok(created);
     }
 
-    @PatchMapping("/{id}")
-    public ResponseEntity<UserEmployeeEntity> updateEmployee(@PathVariable int id, @RequestBody UserEmployeeEntity updatedEmployee) {
-        UserEmployeeEntity updated = userEmployeeService.updateUserEmployee(id, updatedEmployee);
+    @PutMapping("/{id}")
+    public ResponseEntity<UserEmployee> updateEmployee(@PathVariable int id, @RequestBody UserEmployee updatedEmployee) {
+        UserEmployee updated = userEmployeeService.updateUserEmployee(id, updatedEmployee);
         if (updated != null) {
             return ResponseEntity.ok(updated);
         } else {

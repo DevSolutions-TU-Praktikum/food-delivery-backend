@@ -1,10 +1,8 @@
 package com.example.food_delivery_app.Service;
 
-import com.example.food_delivery_app.Entity.UserEntity;
+import com.example.food_delivery_app.Entity.User;
 import com.example.food_delivery_app.Repository.UserRepository;
-import com.example.food_delivery_app.dto.SignUpDto;
 import jakarta.persistence.EntityNotFoundException;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -13,7 +11,6 @@ import java.util.Optional;
 @Service
 public class UserService {
     private final UserRepository userRepository;
-    private final ModelMapper modelMapper = new ModelMapper();
 
     @Autowired
     public UserService(UserRepository userRepository) {
@@ -21,30 +18,33 @@ public class UserService {
     }
 
 
-    public UserEntity createUser(SignUpDto dto) {
-        UserEntity userEntity = modelMapper.map(dto, UserEntity.class);
-        return userRepository.save(userEntity);
+    public User createUser(User user) {
+        return userRepository.save(user);
     }
 
 
-    public Optional<UserEntity> getUserById(int id) {
+    public Optional<User> getUserById(int id) {
         if (!userRepository.existsById(id)) {
             throw new EntityNotFoundException("UserItem not found with ID: " + id);
         }
         return userRepository.findById(id);
     }
 
+    public Optional<User> getUserByUsername(String username) {
+        return userRepository.findByUsername(username);
+    }
 
-    public List<UserEntity> getAllUsers() {
+
+    public List<User> getAllUsers() {
         return userRepository.findAll();
     }
 
 
-    public UserEntity updateUser(int id, UserEntity UserEntity) {
+    public User updateUser(int id, User User) {
         if (!userRepository.existsById(id)) {
             throw new EntityNotFoundException("UserItem not found with ID: " + id);
         }
-        return userRepository.save(UserEntity);
+        return userRepository.save(User);
     }
 
 

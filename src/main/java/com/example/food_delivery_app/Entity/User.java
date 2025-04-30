@@ -3,15 +3,15 @@ package com.example.food_delivery_app.Entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Getter
 @Setter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
 
 @Entity
-@Table(name = "USER")
-public class UserEntity {
+@Table(name = "users")
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -32,4 +32,11 @@ public class UserEntity {
     private Role role;
 
     private String adminPermissions;
+    public int getId() {
+        return id;
+    }
+    
+    public String getUsername() {
+        return username;
+    }
 }

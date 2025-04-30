@@ -2,6 +2,8 @@ package com.example.food_delivery_app.dto;
 
 import lombok.*;
 
+@Setter
+@Getter
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -11,6 +13,4 @@ public class LoginDto {
     private String username;
     @NonNull
     private String password;
-
-
 }

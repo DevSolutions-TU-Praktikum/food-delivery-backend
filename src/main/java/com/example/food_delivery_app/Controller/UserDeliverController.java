@@ -1,7 +1,7 @@
 package com.example.food_delivery_app.Controller;
 
-import com.example.food_delivery_app.Entity.UserDelivererEntity;
-import com.example.food_delivery_app.Entity.UserEmployeeEntity;
+import com.example.food_delivery_app.Entity.UserDeliverer;
+import com.example.food_delivery_app.Entity.UserEmployee;
 import com.example.food_delivery_app.Repository.UserDelivererRepository;
 import com.example.food_delivery_app.Service.UserDelivererService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,14 +32,14 @@ public class UserDeliverController {
     }
 
     @PostMapping
-    public ResponseEntity<UserDelivererEntity> createMenuItem(@RequestBody UserDelivererEntity userDeliverer) {
-        UserDelivererEntity created = userDelivererService.createUserDeliverer(userDeliverer);
+    public ResponseEntity<UserDeliverer> createMenuItem(@RequestBody UserDeliverer userDeliverer) {
+        UserDeliverer created = userDelivererService.createUserDeliverer(userDeliverer);
         return ResponseEntity.ok(created);
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<UserDelivererEntity> updateDeliverer(@PathVariable int id, @RequestBody UserDelivererEntity updatedDeliverer) {
-        UserDelivererEntity updated = userDelivererService.updateUserDeliverer(id, updatedDeliverer);
+    public ResponseEntity<UserDeliverer> updateDeliverer(@PathVariable int id, @RequestBody UserDeliverer updatedDeliverer) {
+        UserDeliverer updated = userDelivererService.updateUserDeliverer(id, updatedDeliverer);
         if (updated != null) {
             return ResponseEntity.ok(updated);
         } else {

@@ -1,6 +1,6 @@
 package com.example.food_delivery_app.controllers;
 
-import com.example.food_delivery_app.Entity.UserEntity;
+import com.example.food_delivery_app.Entity.User;
 import com.example.food_delivery_app.Service.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
@@ -38,7 +38,7 @@ public class UserEntityControllerIntegrationTest {
 
     @Test
     public void testThatUserCanBeCreatedSuccesfullyReturnsHttp201Created() throws Exception {
-        UserEntity testUserA =new UserEntity();
+        User testUserA =new User();
         testUserA.setUsername("testUserA");
         testUserA.setPassword("<PASSWORD>");
         testUserA.setUserEmail("<EMAIL>");

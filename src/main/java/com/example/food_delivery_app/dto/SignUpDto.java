@@ -4,6 +4,8 @@ import com.example.food_delivery_app.Entity.Role;
 import jakarta.persistence.*;
 import lombok.*;
 
+@Setter
+@Getter
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

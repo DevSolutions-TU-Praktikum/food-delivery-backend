@@ -10,7 +10,7 @@ import lombok.*;
 @ToString
 
 @Entity
-@Table(name = "RESTAURANTS")
+@Table(name = "restaurants")
 public class Restaurant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

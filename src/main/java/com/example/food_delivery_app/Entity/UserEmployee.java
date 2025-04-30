@@ -10,19 +10,17 @@ import lombok.*;
 @ToString
 
 @Entity
-@Table(name = "USER_DELIVERER")
-public class UserDelivererEntity {
+@Table(name = "user_employees")
+public class UserEmployee {
     @OneToOne
     @MapsId
     @JoinColumn(name = "id")
-    private UserEntity userEntity;
+    private User userEntity;
 
     @Id
     private int id;
 
-    private double delivererRating;
-
-    private int completedDeliveries;
-
-    private double totalEarnings;
+    @ManyToOne
+    @JoinColumn(name = "restaurant_id")
+    private Restaurant restaurant;
 }
