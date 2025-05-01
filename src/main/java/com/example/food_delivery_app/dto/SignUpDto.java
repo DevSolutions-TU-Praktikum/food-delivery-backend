@@ -1,7 +1,5 @@
 package com.example.food_delivery_app.dto;
 
-import com.example.food_delivery_app.Entity.Role;
-import jakarta.persistence.*;
 import lombok.*;
 
 @Setter

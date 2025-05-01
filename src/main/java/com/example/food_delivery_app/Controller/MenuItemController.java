@@ -5,11 +5,11 @@ import com.example.food_delivery_app.Service.MenuItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins ="localhost:5500")
 @RequestMapping("/api/menu-items")
 public class MenuItemController {
 

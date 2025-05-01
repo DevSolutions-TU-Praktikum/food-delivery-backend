@@ -32,11 +32,4 @@ public class User {
     private Role role;
 
     private String adminPermissions;
-    public int getId() {
-        return id;
-    }
-    
-    public String getUsername() {
-        return username;
-    }
 }

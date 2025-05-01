@@ -2,7 +2,6 @@ package com.example.food_delivery_app.Controller;
 
 import com.example.food_delivery_app.Entity.Menu;
 import com.example.food_delivery_app.Entity.MenuItem;
-import com.example.food_delivery_app.Entity.Order;
 import com.example.food_delivery_app.Service.MenuService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins ="localhost:5500")
 @RequestMapping("/menu")
 public class MenuController {
 

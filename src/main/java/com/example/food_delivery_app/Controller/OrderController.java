@@ -1,17 +1,15 @@
 package com.example.food_delivery_app.Controller;
 
-import com.example.food_delivery_app.Entity.MenuItem;
 import com.example.food_delivery_app.Entity.Order;
-import com.example.food_delivery_app.Entity.Restaurant;
 import com.example.food_delivery_app.Service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins ="localhost:5500")
 @RequestMapping("/orders")
 public class OrderController {
     @Autowired

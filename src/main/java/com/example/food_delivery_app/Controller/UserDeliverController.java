@@ -1,7 +1,6 @@
 package com.example.food_delivery_app.Controller;
 
 import com.example.food_delivery_app.Entity.UserDeliverer;
-import com.example.food_delivery_app.Entity.UserEmployee;
 import com.example.food_delivery_app.Repository.UserDelivererRepository;
 import com.example.food_delivery_app.Service.UserDelivererService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin(origins ="localhost:5500")
 @RequestMapping("/userDeliverer")
 
 public class UserDeliverController {
