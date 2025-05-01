@@ -37,7 +37,7 @@ public class OrderService {
 
     public Optional<Order> getOrderById(int id) {
         if (!orderRepository.existsById(id)) {
-            throw new EntityNotFoundException("OrderItem not found with ID: " + id);
+            throw new EntityNotFoundException("Order not found with ID: " + id);
         }
         return orderRepository.findById(id);
     }
@@ -50,7 +50,7 @@ public class OrderService {
 
     public Order updateOrder(int id, Order Order) {
         if (!orderRepository.existsById(id)) {
-            throw new EntityNotFoundException("OrderItem not found with ID: " + id);
+            throw new EntityNotFoundException("Order not found with ID: " + id);
         }
         return orderRepository.save(Order);
     }

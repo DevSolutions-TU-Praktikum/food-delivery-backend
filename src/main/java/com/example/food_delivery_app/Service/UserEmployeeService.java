@@ -25,7 +25,7 @@ public class UserEmployeeService {
 
     public Optional<UserEmployee> getUserEmployeeById(int id) {
         if (!useremployeeRepository.existsById(id)) {
-            throw new EntityNotFoundException("UserEmployeeItem not found with ID: " + id);
+            throw new EntityNotFoundException("UserEmployee not found with ID: " + id);
         }
         return useremployeeRepository.findById(id);
     }
@@ -38,7 +38,7 @@ public class UserEmployeeService {
 
     public UserEmployee updateUserEmployee(int id, UserEmployee UserEmployee) {
         if (!useremployeeRepository.existsById(id)) {
-            throw new EntityNotFoundException("UserEmployeeItem not found with ID: " + id);
+            throw new EntityNotFoundException("UserEmployee not found with ID: " + id);
         }
         return useremployeeRepository.save(UserEmployee);
     }

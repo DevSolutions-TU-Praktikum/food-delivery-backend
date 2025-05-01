@@ -25,7 +25,7 @@ public class UserService {
 
     public Optional<User> getUserById(int id) {
         if (!userRepository.existsById(id)) {
-            throw new EntityNotFoundException("UserItem not found with ID: " + id);
+            throw new EntityNotFoundException("User not found with ID: " + id);
         }
         return userRepository.findById(id);
     }
@@ -42,7 +42,7 @@ public class UserService {
 
     public User updateUser(int id, User User) {
         if (!userRepository.existsById(id)) {
-            throw new EntityNotFoundException("UserItem not found with ID: " + id);
+            throw new EntityNotFoundException("User not found with ID: " + id);
         }
         return userRepository.save(User);
     }

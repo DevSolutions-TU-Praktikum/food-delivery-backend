@@ -25,7 +25,7 @@ public class UserDelivererService {
 
     public Optional<UserDeliverer> getUserDelivererById(int id) {
         if (!userdelivererRepository.existsById(id)) {
-            throw new EntityNotFoundException("UserDelivererItem not found with ID: " + id);
+            throw new EntityNotFoundException("UserDeliverer not found with ID: " + id);
         }
         return userdelivererRepository.findById(id);
     }
@@ -38,7 +38,7 @@ public class UserDelivererService {
 
     public UserDeliverer updateUserDeliverer(int id, UserDeliverer UserDeliverer) {
         if (!userdelivererRepository.existsById(id)) {
-            throw new EntityNotFoundException("UserDelivererItem not found with ID: " + id);
+            throw new EntityNotFoundException("UserDeliverer not found with ID: " + id);
         }
         return userdelivererRepository.save(UserDeliverer);
     }

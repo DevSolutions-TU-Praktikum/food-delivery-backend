@@ -25,7 +25,7 @@ public class RestaurantService {
 
     public Optional<Restaurant> getRestaurantById(int id) {
         if (!restaurantRepository.existsById(id)) {
-            throw new EntityNotFoundException("RestaurantItem not found with ID: " + id);
+            throw new EntityNotFoundException("Restaurant not found with ID: " + id);
         }
         return restaurantRepository.findById(id);
     }
@@ -38,7 +38,7 @@ public class RestaurantService {
 
     public Restaurant updateRestaurant(int id, Restaurant Restaurant) {
         if (!restaurantRepository.existsById(id)) {
-            throw new EntityNotFoundException("RestaurantItem not found with ID: " + id);
+            throw new EntityNotFoundException("Restaurant not found with ID: " + id);
         }
         return restaurantRepository.save(Restaurant);
     }
