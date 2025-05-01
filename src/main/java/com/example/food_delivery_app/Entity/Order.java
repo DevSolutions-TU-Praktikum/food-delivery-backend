@@ -16,7 +16,7 @@ import lombok.*;
 @ToString
 
 @Entity
-@Table(name = "ORDERS")
+@Table(name = "orders")
 
 public class Order {
     @Id
@@ -27,13 +27,14 @@ public class Order {
     @JoinColumn(name = "user_id")
     private User user;
 
+
     @ManyToOne
     @JoinColumn(name = "restaurant_id")
     private Restaurant restaurant;
 
     @ManyToOne
     @JoinColumn(name = "deliverer_id")
-    private UserDeliverer userDeliverer;
+    private UserDeliverer userDelivererEntity;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     @JsonManagedReference
