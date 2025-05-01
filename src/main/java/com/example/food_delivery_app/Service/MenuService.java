@@ -49,7 +49,7 @@ public class MenuService {
 
     public Optional<Menu> getMenuById(int id) {
         if (!menuRepository.existsById(id)) {
-            throw new EntityNotFoundException("MenuItem not found with ID: " + id);
+            throw new EntityNotFoundException("Menu not found with ID: " + id);
         }
         return menuRepository.findById(id);
     }
@@ -62,7 +62,7 @@ public class MenuService {
 
     public Menu updateMenu(int id, Menu menu) {
         if (!menuRepository.existsById(id)) {
-            throw new EntityNotFoundException("MenuItem not found with ID: " + id);
+            throw new EntityNotFoundException("Menu not found with ID: " + id);
         }
         return menuRepository.save(menu);
     }
