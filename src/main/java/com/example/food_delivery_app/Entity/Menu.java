@@ -2,7 +2,6 @@ package com.example.food_delivery_app.Entity;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import jakarta.persistence.*;
 import lombok.*;
 

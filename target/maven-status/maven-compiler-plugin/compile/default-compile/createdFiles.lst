@@ -1,6 +1,9 @@
 com\example\food_delivery_app\Entity\UserEmployee.class
+com\example\food_delivery_app\Controller\OrderController.class
+com\example\food_delivery_app\Controller\MenuController.class
 com\example\food_delivery_app\Service\UserService.class
 com\example\food_delivery_app\FoodDeliveryAppApplication.class
+com\example\food_delivery_app\Controller\RestaurantController.class
 com\example\food_delivery_app\dto\LoginDto.class
 com\example\food_delivery_app\Service\UserDelivererService.class
 com\example\food_delivery_app\config\mapperConfig.class
@@ -16,7 +19,7 @@ com\example\food_delivery_app\Service\MenuItemService.class
 com\example\food_delivery_app\Entity\Order.class
 com\example\food_delivery_app\Service\RestaurantService.class
 com\example\food_delivery_app\dto\LoginDto$LoginDtoBuilder.class
-com\example\food_delivery_app\Entity\Order$Status.class
+com\example\food_delivery_app\Entity\Status.class
 com\example\food_delivery_app\Entity\Restaurant.class
 com\example\food_delivery_app\Repository\UserEmployeeRepository.class
 com\example\food_delivery_app\Service\UserEmployeeService.class

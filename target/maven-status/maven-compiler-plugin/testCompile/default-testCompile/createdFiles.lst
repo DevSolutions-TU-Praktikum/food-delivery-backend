@@ -1,2 +1,9 @@
 com\example\food_delivery_app\FoodDeliveryAppApplicationTests.class
+com\example\food_delivery_app\services\MenuServiceTest.class
+com\example\food_delivery_app\services\OrderServiceTest.class
+com\example\food_delivery_app\services\RestaurantServiceTest.class
+com\example\food_delivery_app\services\MenuItemServiceTest.class
+com\example\food_delivery_app\services\UserEmployeeServiceTest.class
+com\example\food_delivery_app\services\UserServiceTest.class
 com\example\food_delivery_app\controllers\UserEntityControllerIntegrationTest.class
+com\example\food_delivery_app\services\UserDelivererServiceTest.class

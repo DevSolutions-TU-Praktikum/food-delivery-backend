@@ -4,6 +4,7 @@ import com.example.food_delivery_app.Entity.User;
 import com.example.food_delivery_app.dto.LoginDto;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,7 +26,7 @@ public class UserController {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<User> signup(@RequestBody User user) {
+    public ResponseEntity<User> signup(@RequestBody @Valid User user) {
         User createdUser = userService.createUser(user);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
     }
@@ -58,7 +59,7 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateUser(@PathVariable int id,@RequestBody User user) {
+    public ResponseEntity<?> updateUser(@PathVariable int id,@RequestBody @Valid User user) {
         User updated = userService.updateUser(id, user);
         if (updated != null) {
             return ResponseEntity.ok(updated);

@@ -3,6 +3,7 @@ package com.example.food_delivery_app.Service;
 import com.example.food_delivery_app.Entity.MenuItem;
 import com.example.food_delivery_app.Repository.MenuItemRepository;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -18,7 +19,7 @@ public class MenuItemService {
     }
 
 
-    public MenuItem createMenuItem(MenuItem menuItem) {
+    public MenuItem createMenuItem(@Valid MenuItem menuItem) {
         return menuItemRepository.save(menuItem);
     }
 
@@ -36,7 +37,7 @@ public class MenuItemService {
     }
 
 
-    public MenuItem updateMenuItem(int id, MenuItem menuItem) {
+    public MenuItem updateMenuItem(int id, @Valid MenuItem menuItem) {
         if (!menuItemRepository.existsById(id)) {
             throw new EntityNotFoundException("MenuItem not found with ID: " + id);
         }

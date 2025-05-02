@@ -3,6 +3,8 @@ package com.example.food_delivery_app.Controller;
 import com.example.food_delivery_app.Entity.UserEmployee;
 import com.example.food_delivery_app.Service.UserEmployeeService;
 import java.util.Optional;
+
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,13 +33,13 @@ public class UserEmployeeController {
     }
 
     @PostMapping
-    public ResponseEntity<UserEmployee> createMenuItem(@RequestBody UserEmployee userEmployee) {
+    public ResponseEntity<UserEmployee> createMenuItem(@RequestBody @Valid UserEmployee userEmployee) {
         UserEmployee created = userEmployeeService.createUserEmployee(userEmployee);
         return ResponseEntity.ok(created);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<UserEmployee> updateEmployee(@PathVariable int id, @RequestBody UserEmployee updatedEmployee) {
+    public ResponseEntity<UserEmployee> updateEmployee(@PathVariable int id, @RequestBody @Valid UserEmployee updatedEmployee) {
         UserEmployee updated = userEmployeeService.updateUserEmployee(id, updatedEmployee);
         if (updated != null) {
             return ResponseEntity.ok(updated);

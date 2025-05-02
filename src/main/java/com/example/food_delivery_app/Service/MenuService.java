@@ -7,6 +7,7 @@ import com.example.food_delivery_app.Repository.MenuItemRepository;
 import com.example.food_delivery_app.Repository.MenuRepository;
 import com.example.food_delivery_app.Repository.RestaurantRepository;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -60,7 +61,7 @@ public class MenuService {
     }
 
 
-    public Menu updateMenu(int id, Menu menu) {
+    public Menu updateMenu(int id, @Valid Menu menu) {
         if (!menuRepository.existsById(id)) {
             throw new EntityNotFoundException("Menu not found with ID: " + id);
         }

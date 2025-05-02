@@ -1,6 +1,7 @@
 package com.example.food_delivery_app.Entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 import lombok.*;
 
 @Setter
@@ -22,9 +23,11 @@ public class User {
     @NonNull
     private String password;
 
+    @Email
     @NonNull
     private String userEmail;
 
+    @Size(min = 10, max = 12)
     @NonNull
     private String userPhoneNumber;
 

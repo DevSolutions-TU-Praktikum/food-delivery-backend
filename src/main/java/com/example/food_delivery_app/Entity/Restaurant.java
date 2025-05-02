@@ -2,6 +2,7 @@ package com.example.food_delivery_app.Entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import jakarta.validation.constraints.*;
 
 @Getter
 @Setter
@@ -22,11 +23,15 @@ public class Restaurant {
     @NonNull
     private String restaurantAddress;
 
+    @Size(min = 10, max = 12)
     @NonNull
     private String restaurantPhoneNumber;
 
+    @Email
     @NonNull
     private String restaurantEmail;
+
     private double restaurantRevenue;
+
     private double restaurantRating;
 }

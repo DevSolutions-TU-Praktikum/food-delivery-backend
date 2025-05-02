@@ -3,6 +3,7 @@ package com.example.food_delivery_app.Service;
 import com.example.food_delivery_app.Entity.UserEmployee;
 import com.example.food_delivery_app.Repository.UserEmployeeRepository;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -18,7 +19,7 @@ public class UserEmployeeService {
     }
 
 
-    public UserEmployee createUserEmployee(UserEmployee useremployee) {
+    public UserEmployee createUserEmployee(@Valid UserEmployee useremployee) {
         return useremployeeRepository.save(useremployee);
     }
 
@@ -36,7 +37,7 @@ public class UserEmployeeService {
     }
 
 
-    public UserEmployee updateUserEmployee(int id, UserEmployee UserEmployee) {
+    public UserEmployee updateUserEmployee(int id, @Valid UserEmployee UserEmployee) {
         if (!useremployeeRepository.existsById(id)) {
             throw new EntityNotFoundException("UserEmployee not found with ID: " + id);
         }
