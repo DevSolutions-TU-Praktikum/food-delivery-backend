@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import com.example.food_delivery_app.Entity.UserEmployee;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:5500")
 @RequestMapping("/userEmployee")
 public class UserEmployeeController {
 

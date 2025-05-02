@@ -10,7 +10,8 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/menu-items")
+@CrossOrigin(origins = "http://localhost:5500")
+@RequestMapping("/menu-items")
 public class MenuItemController {
 
     private final MenuItemService menuItemService;

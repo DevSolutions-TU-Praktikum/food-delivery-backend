@@ -3,6 +3,8 @@ package com.example.food_delivery_app.Entity;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.format.annotation.DateTimeFormat;
 import jakarta.persistence.*;
 import lombok.*;
@@ -17,21 +19,14 @@ import lombok.*;
 @Table(name = "orders")
 
 public class Order {
-    private enum Status {
-        PENDING,
-        ACCEPTED,
-        PICKEDUP,
-        DELIVERED,
-        REFUSED
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @ManyToOne
-    @JoinColumn(name = "userclient_id")
-    private User userEntityClient;
+    @JoinColumn(name = "user_id")
+    private User user;
+
 
     @ManyToOne
     @JoinColumn(name = "restaurant_id")
@@ -42,6 +37,7 @@ public class Order {
     private UserDeliverer userDelivererEntity;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    @JsonManagedReference
     List<MenuItem> menuItems = new ArrayList<>();
 
     private double deliveryFee;

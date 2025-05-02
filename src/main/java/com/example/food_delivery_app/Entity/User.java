@@ -30,13 +30,4 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     private Role role;
-
-    private String adminPermissions;
-    public int getId() {
-        return id;
-    }
-    
-    public String getUsername() {
-        return username;
-    }
 }
