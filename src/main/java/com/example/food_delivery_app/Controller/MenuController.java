@@ -3,6 +3,7 @@ package com.example.food_delivery_app.Controller;
 import com.example.food_delivery_app.Entity.Menu;
 import com.example.food_delivery_app.Entity.MenuItem;
 import com.example.food_delivery_app.Service.MenuService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,7 +27,7 @@ public class MenuController {
     }
 
     @PostMapping("/create")
-    public Menu createMenu(@RequestParam int restaurantId){
+    public Menu createMenu(@RequestParam @Valid int restaurantId){
         return menuService.createMenu(restaurantId);
     }
 
