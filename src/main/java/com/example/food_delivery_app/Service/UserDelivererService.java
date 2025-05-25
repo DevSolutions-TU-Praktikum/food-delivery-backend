@@ -3,6 +3,7 @@ package com.example.food_delivery_app.Service;
 import com.example.food_delivery_app.Entity.UserDeliverer;
 import com.example.food_delivery_app.Repository.UserDelivererRepository;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -18,14 +19,14 @@ public class UserDelivererService {
     }
 
 
-    public UserDeliverer createUserDeliverer(UserDeliverer userdeliverer) {
+    public UserDeliverer createUserDeliverer(@Valid UserDeliverer userdeliverer) {
         return userdelivererRepository.save(userdeliverer);
     }
 
 
     public Optional<UserDeliverer> getUserDelivererById(int id) {
         if (!userdelivererRepository.existsById(id)) {
-            throw new EntityNotFoundException("UserDelivererItem not found with ID: " + id);
+            throw new EntityNotFoundException("UserDeliverer not found with ID: " + id);
         }
         return userdelivererRepository.findById(id);
     }
@@ -36,9 +37,9 @@ public class UserDelivererService {
     }
 
 
-    public UserDeliverer updateUserDeliverer(int id, UserDeliverer UserDeliverer) {
+    public UserDeliverer updateUserDeliverer(int id, @Valid UserDeliverer UserDeliverer) {
         if (!userdelivererRepository.existsById(id)) {
-            throw new EntityNotFoundException("UserDelivererItem not found with ID: " + id);
+            throw new EntityNotFoundException("UserDeliverer not found with ID: " + id);
         }
         return userdelivererRepository.save(UserDeliverer);
     }

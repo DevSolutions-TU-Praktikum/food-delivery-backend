@@ -5,6 +5,7 @@ import com.example.food_delivery_app.Entity.User;
 import com.example.food_delivery_app.Repository.UserRepository;
 import com.example.food_delivery_app.dto.SignUpDto;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -30,15 +31,14 @@ public class UserService {
         user.setPassword(dto.getPassword());
         user.setUserEmail(dto.getUserEmail());
         user.setUserPhoneNumber(dto.getUserPhoneNumber());
-        user.setRole(Role.CLIENT); // по подразбиране
+        user.setRole(Role.CLIENT);
         user.setAdminPermissions(null);
-        return userRepository.save(user);
-    }
+}
 
 
     public Optional<User> getUserById(int id) {
         if (!userRepository.existsById(id)) {
-            throw new EntityNotFoundException("UserItem not found with ID: " + id);
+            throw new EntityNotFoundException("User not found with ID: " + id);
         }
         return userRepository.findById(id);
     }
@@ -53,9 +53,9 @@ public class UserService {
     }
 
 
-    public User updateUser(int id, User User) {
+    public User updateUser(int id, @Valid User User) {
         if (!userRepository.existsById(id)) {
-            throw new EntityNotFoundException("UserItem not found with ID: " + id);
+            throw new EntityNotFoundException("User not found with ID: " + id);
         }
         return userRepository.save(User);
     }

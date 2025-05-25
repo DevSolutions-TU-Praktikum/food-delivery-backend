@@ -6,6 +6,7 @@ import com.example.food_delivery_app.Repository.OrderRepository;
 import com.example.food_delivery_app.Repository.RestaurantRepository;
 import com.example.food_delivery_app.Repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,7 +31,7 @@ public class OrderService {
     }
 
 
-    public Order createOrder(Order order) {
+    public Order createOrder(@Valid Order order) {
         return orderRepository.save(order);
     }
 

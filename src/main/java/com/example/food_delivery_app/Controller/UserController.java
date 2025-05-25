@@ -7,6 +7,7 @@ import com.example.food_delivery_app.dto.LoginDto;
 import com.example.food_delivery_app.dto.SignUpDto;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -43,6 +44,7 @@ public class UserController {
     }
 
     @PostMapping("/signup")
+
     public ResponseEntity<AuthResponseDto> signup(@RequestBody SignUpDto signupDto) {
         if( userService.getUserByUsername( signupDto.getUsername() ).isPresent() && userService.getUserByUsername(signupDto.getUsername()).get().getPassword().equals( signupDto.getPassword()) ) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(null);
@@ -106,7 +108,7 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateUser(@PathVariable int id,@RequestBody User user) {
+    public ResponseEntity<?> updateUser(@PathVariable int id,@RequestBody @Valid User user) {
         User updated = userService.updateUser(id, user);
         if (updated != null) {
             return ResponseEntity.ok(updated);

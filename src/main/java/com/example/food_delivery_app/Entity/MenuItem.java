@@ -2,6 +2,9 @@ package com.example.food_delivery_app.Entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.validation.constraints.Size;
+
 import lombok.*;
 import jakarta.persistence.*;
 
@@ -20,11 +23,14 @@ public class MenuItem {
 
     @ManyToOne
     @JoinColumn(name = "menu_id")
+  
     @JsonBackReference
+    @JsonIgnore
     private Menu menu;
 
     @ManyToOne
     @JoinColumn(name = "order_id")
+    @JsonBackReference
     private Order order;
 
     private String imageUrl;
@@ -34,5 +40,6 @@ public class MenuItem {
 
     private String itemDescription;
 
+    @Size(min = 0, message = "Price cannot be negative.")
     private double itemPrice;
 }

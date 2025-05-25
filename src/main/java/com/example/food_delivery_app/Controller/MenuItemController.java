@@ -2,10 +2,10 @@ package com.example.food_delivery_app.Controller;
 
 import com.example.food_delivery_app.Entity.MenuItem;
 import com.example.food_delivery_app.Service.MenuItemService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -22,7 +22,7 @@ public class MenuItemController {
     }
 
     @PostMapping
-    public ResponseEntity<MenuItem> createMenuItem(@RequestBody MenuItem menuItem) {
+    public ResponseEntity<MenuItem> createMenuItem(@RequestBody @Valid MenuItem menuItem) {
         MenuItem created = menuItemService.createMenuItem(menuItem);
         return ResponseEntity.ok(created);
     }
@@ -39,7 +39,7 @@ public class MenuItemController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<MenuItem> updateMenuItem(@PathVariable int id, @RequestBody MenuItem updatedItem) {
+    public ResponseEntity<MenuItem> updateMenuItem(@PathVariable int id, @RequestBody @Valid MenuItem updatedItem) {
         MenuItem updated = menuItemService.updateMenuItem(id, updatedItem);
         if (updated != null) {
             return ResponseEntity.ok(updated);

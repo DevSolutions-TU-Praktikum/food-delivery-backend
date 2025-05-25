@@ -1,2 +1,9 @@
-D:\food-backend2\food-delivery-backend\src\test\java\com\example\food_delivery_app\controllers\UserEntityControllerIntegrationTest.java
-D:\food-backend2\food-delivery-backend\src\test\java\com\example\food_delivery_app\FoodDeliveryAppApplicationTests.java
+D:\Uni\TU - staj\food-delivery-backend\src\test\java\com\example\food_delivery_app\controllers\UserEntityControllerIntegrationTest.java
+D:\Uni\TU - staj\food-delivery-backend\src\test\java\com\example\food_delivery_app\FoodDeliveryAppApplicationTests.java
+D:\Uni\TU - staj\food-delivery-backend\src\test\java\com\example\food_delivery_app\services\MenuItemServiceTest.java
+D:\Uni\TU - staj\food-delivery-backend\src\test\java\com\example\food_delivery_app\services\MenuServiceTest.java
+D:\Uni\TU - staj\food-delivery-backend\src\test\java\com\example\food_delivery_app\services\OrderServiceTest.java
+D:\Uni\TU - staj\food-delivery-backend\src\test\java\com\example\food_delivery_app\services\RestaurantServiceTest.java
+D:\Uni\TU - staj\food-delivery-backend\src\test\java\com\example\food_delivery_app\services\UserDelivererServiceTest.java
+D:\Uni\TU - staj\food-delivery-backend\src\test\java\com\example\food_delivery_app\services\UserEmployeeServiceTest.java
+D:\Uni\TU - staj\food-delivery-backend\src\test\java\com\example\food_delivery_app\services\UserServiceTest.java
