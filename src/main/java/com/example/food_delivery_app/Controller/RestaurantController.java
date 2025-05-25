@@ -1,8 +1,8 @@
 package com.example.food_delivery_app.Controller;
 
 import com.example.food_delivery_app.Entity.Restaurant;
-import com.example.food_delivery_app.Entity.User;
 import com.example.food_delivery_app.Service.RestaurantService;
+import com.example.food_delivery_app.Entity.User;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin(origins ="localhost:5500")
+@CrossOrigin(origins = "http://localhost:5500")
 @RequestMapping("/restaurants")
 public class RestaurantController {
 
@@ -38,6 +38,7 @@ public class RestaurantController {
         return ResponseEntity.ok(savedRestaurant);
     }
 
+
     @PutMapping("/{id}")
     public ResponseEntity<?> updateRestaurant(@PathVariable int id,@RequestBody @Valid Restaurant restaurant) {
         Restaurant updated = restaurantService.updateRestaurant(id, restaurant);
@@ -47,7 +48,7 @@ public class RestaurantController {
             return ResponseEntity.notFound().build();
         }
     }
-
+  
     @DeleteMapping("/delete/{Id}")
     public ResponseEntity<String> deleteRestaurant(@PathVariable int Id) {
         boolean deleted = restaurantService.deleteRestaurant(Id);

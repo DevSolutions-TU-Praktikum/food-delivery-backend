@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin(origins ="localhost:5500")
+@CrossOrigin(origins = "http://localhost:5500")
 @RequestMapping("/userDeliverer")
 
 public class UserDeliverController {
@@ -33,6 +33,7 @@ public class UserDeliverController {
     }
 
     @PostMapping
+
     public ResponseEntity<UserDeliverer> createMenuItem(@RequestBody @Valid UserDeliverer userDeliverer) {
         UserDeliverer created = userDelivererService.createUserDeliverer(userDeliverer);
         return ResponseEntity.ok(created);

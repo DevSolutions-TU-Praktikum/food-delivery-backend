@@ -2,6 +2,7 @@ package com.example.food_delivery_app.Entity;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -20,6 +21,7 @@ public class Menu {
 
     private String menuDescription;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "menu", cascade = CascadeType.ALL)
     List<MenuItem> menuItems = new ArrayList<>();
 

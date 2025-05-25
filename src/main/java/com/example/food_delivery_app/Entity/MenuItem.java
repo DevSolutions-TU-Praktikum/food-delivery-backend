@@ -2,7 +2,9 @@ package com.example.food_delivery_app.Entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.validation.constraints.Size;
+
 import lombok.*;
 import jakarta.persistence.*;
 
@@ -21,6 +23,8 @@ public class MenuItem {
 
     @ManyToOne
     @JoinColumn(name = "menu_id")
+  
+    @JsonBackReference
     @JsonIgnore
     private Menu menu;
 

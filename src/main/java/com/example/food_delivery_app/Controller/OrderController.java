@@ -9,7 +9,8 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin(origins ="localhost:5500")
+@CrossOrigin(origins = "http://localhost:5500")
+
 @RequestMapping("/orders")
 public class OrderController {
     @Autowired
@@ -25,13 +26,7 @@ public class OrderController {
         Optional<Order> found = orderService.getOrderById(id);
         return ResponseEntity.of(found);
     }
-/*
-    @PostMapping("/create")
-    public ResponseEntity<Order> createOrder(@RequestBody Order order) {
-        Order savedOrder = orderService.createOrder(order);
-        return ResponseEntity.ok(savedOrder);
-    }
-*/
+
     @PostMapping("/create")
     public Order createOrder(@RequestParam int userId, @RequestParam int restaurantId) {
         return orderService.createOrderForUserIdAndRestaurant(userId, restaurantId);
@@ -60,5 +55,4 @@ public class OrderController {
         } else {
             return ResponseEntity.notFound().build();
         }
-    }
 }

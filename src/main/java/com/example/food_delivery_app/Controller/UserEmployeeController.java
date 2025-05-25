@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin(origins ="localhost:5500")
+@CrossOrigin(origins = "http://localhost:5500")
 @RequestMapping("/userEmployee")
 public class UserEmployeeController {
 

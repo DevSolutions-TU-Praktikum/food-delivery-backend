@@ -89,16 +89,16 @@ public class OrderService {
         Order order = orderRepository
                 .findByUserAndStatus(user, Status.DRAFT)
                 .orElseGet(() -> {
-                   Order newOrder = new Order();
-                   newOrder.setUser(user);
-                   newOrder.setRestaurant(item.getMenu().getRestaurant());
-                   newOrder.setMenuItems(new ArrayList<>());
-                   newOrder.setCreatedOrder(LocalDateTime.now());
-                   newOrder.setStatus(Status.DRAFT);
-                   newOrder.setDeliveryFee(0);
-                   newOrder.setTip(0);
-                   newOrder.setTotalCost(0);
-                   return newOrder;
+                    Order newOrder = new Order();
+                    newOrder.setUser(user);
+                    newOrder.setRestaurant(item.getMenu().getRestaurant());
+                    newOrder.setMenuItems(new ArrayList<>());
+                    newOrder.setCreatedOrder(LocalDateTime.now());
+                    newOrder.setStatus(Status.DRAFT);
+                    newOrder.setDeliveryFee(0);
+                    newOrder.setTip(0);
+                    newOrder.setTotalCost(0);
+                    return newOrder;
                 });
 
         item.setOrder(order);
@@ -125,5 +125,4 @@ public class OrderService {
         return orderRepository.findByUserAndStatus(user, Status.DRAFT).orElse(null);
     }
 }
-
 

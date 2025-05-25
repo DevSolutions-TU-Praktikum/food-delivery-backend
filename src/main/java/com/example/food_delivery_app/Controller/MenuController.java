@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin(origins ="localhost:5500")
+@CrossOrigin(origins = "http://localhost:5500")
 @RequestMapping("/menu")
 public class MenuController {
 

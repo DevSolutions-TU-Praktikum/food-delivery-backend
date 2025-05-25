@@ -1,7 +1,9 @@
 package com.example.food_delivery_app.Service;
 
+import com.example.food_delivery_app.Entity.Role;
 import com.example.food_delivery_app.Entity.User;
 import com.example.food_delivery_app.Repository.UserRepository;
+import com.example.food_delivery_app.dto.SignUpDto;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +21,19 @@ public class UserService {
     }
 
 
-    public User createUser(@Valid User user) {
-        return userRepository.save(user);
-    }
+//    public User createUser(User user) {
+//        return userRepository.save(user);
+//    }
+
+    public User createUser(SignUpDto dto) {
+        User user = new User();
+        user.setUsername(dto.getUsername());
+        user.setPassword(dto.getPassword());
+        user.setUserEmail(dto.getUserEmail());
+        user.setUserPhoneNumber(dto.getUserPhoneNumber());
+        user.setRole(Role.CLIENT);
+        user.setAdminPermissions(null);
+}
 
 
     public Optional<User> getUserById(int id) {
